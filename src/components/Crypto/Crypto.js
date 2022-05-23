@@ -20,7 +20,7 @@ class Crypto extends Component {
         if(state.dollars % 10 === 0){
             return true
         }
-        
+        //------------constantemente esta checando si tienes suficientes dolares-------------
         return false
     
         //return !(state.dollars % 10);
@@ -30,23 +30,25 @@ class Crypto extends Component {
     render() {
         return (
             <div className="Coins">
-                <h1>Compra Cryptocoins</h1>
-                <div className="question">
-                    <p>¿Cuántos dólares tienes</p>
-                    <p>
-                        <input
-                            placeholder='0'
-                            onChange={this.handleOnChange}
-                            type='number'
-                        />
-                    </p>
-                </div>
+                <h1 className="title">Compra Cryptocoins</h1>
+                <div className="box">
+                    <div className="question">
+                        <p>¿Cuántos dólares tienes</p>
+                        <p>
+                            <input
+                                placeholder='0'
+                                onChange={this.handleOnChange}
+                                type='number'
+                            />
+                        </p>
+                    </div>
 
-                <div className="answer">
-                    <p>Precio de Cryptocoin: $10</p>
-                    <p>
-                        Puedes comprar <strong>{this.state.dollars/10}</strong> coins.
-                    </p>
+                    <div className="answer">
+                        <p>Precio de Cryptocoin: $10</p>
+                        <p>
+                            Puedes comprar <strong>{this.state.dollars/10}</strong> coins.{/* aqui hace la combercion de dolar a crypto */}
+                        </p>
+                    </div>
                 </div>
             </div>
         );
