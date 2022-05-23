@@ -7,7 +7,7 @@ import Todo from './Todo/Todo';
 import logo from '../Logo.svg';
 import logo2 from '../Logo2.svg';
 //import Timer from './Pomodoro/Timer';
-//import Crypto from './Crypto/Crypto';
+import Crypto from './Crypto/Crypto';
 //import Charthome from './Chart/Charthome';
 //import Animation from './Animating/Animation';
 //import Numbers from './PureComponent/Numbers';
@@ -21,7 +21,7 @@ function App() {
         <img src={logo2} className="App-logo2" alt="logo" />
       </header>
       <Content >
-        <Todo/>
+        <Crypto/>
       </Content>
       <Footer />
     </div>
