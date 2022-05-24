@@ -1,68 +1,86 @@
 import React, { Component } from 'react';
+import './Calculator.css';
+
 
 class Calculator extends Component {
-    constructor(props){
-        super(props);
 
+    constructor() {
+        super();
         this.state = {
-            Number1: '',
-            Number2: '',
-            Res: ''
-        };
+            number1: 0,
+            number2: 0,
+            result: 0,
+            selector: '',
+        }
     }
-
-    handleOnCkick = e => {
-        document 
-    }
-
-    handleNumber1Change = e => {
-        const {target: {value}} = e; 
-        //const Number1 = Array.from(value);
     
+    handleOnChange = e => {
+        const {target: {value,name, type}} = e;
+
+        const val = type === 'text'? Number(value) : value;
+
         this.setState({
-            Number1: value,
+            [name]: val
         })
     }
 
-    handleNumber2Change = e => {
-        const {target: {value}} = e; 
-        //const Number2 = Array.from(value);
-    
+    handleResult = e => {
+        const {number1,number2,selector} = this.state;
         this.setState({
-            Number2: value,
-        })
-    }
-
-    handleChange = e => {
-        this.setState({
-            
+            result: calculateResult(number1,number2,selector)
         })
     }
 
     render() {
         return (
-            <div>
-                <input
-                    type="number"
-                    value={this.state.Number1}
-                    onChange={this.handleNumber1Change}
-                />
-                <select value={this.state.value} onChange={this.handleChange}>
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">*</option>
-                    <option value="/">/</option>
-                </select>
-                <input
-                    type="number"
-                    value={this.state.Number2}
-                    onChange={this.handleNumber2Change}
-                />
+            <div className= "Numbers">
+                <h2>Calculadora</h2>
+                <div >
+                    <input
+                        onChange= {this.handleOnChange}
+                        name = "number1"
+                        type = "text"
+                        value = {this.state.number1}
+                    />
+                    <select className= "Operacion" name="operacion" value = {this.state.selector} onChange= {this.handleOnChange} >
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">*</option>
+                        <option value="/">/</option>
+                    </select>
+                    <input
+                        onChange= {this.handleOnChange}
+                        name = "number2"
+                        type = "text"
+                        value = {this.state.number2}
+                    />
+                
+                </div>
                 <div>
-                    {this.state.Calculator}
+                    <button 
+                    className = "Calcular"
+                    onClick= {this.handleResult}>
+                        Calcular
+                    </button>
+                    <h2 className = "resultado">{this.state.result}</h2>  
                 </div>
             </div>
         );
+    }
+}
+
+function calculateResult(number1,number2,selector){
+    switch(selector){
+        case "+":
+            return Math.round((number1 + number2)*100)/100;
+        case "-":
+            return Math.round((number1 - number2)*100)/100;
+        case "*":
+            return Math.round((number1 * number2)*100)/100;
+        case "/":
+            return Math.round((number1 / number2)*100)/100;
+        default:
+            return Math.round((number1 + number2)*100)/100;
     }
 }
 
