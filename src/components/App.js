@@ -11,6 +11,7 @@ import Crypto from './Crypto/Crypto';
 //import Charthome from './Chart/Charthome';
 //import Animation from './Animating/Animation';
 //import Numbers from './PureComponent/Numbers';
+import Calculator from './Calculator/Calculator'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <img src={logo2} className="App-logo2" alt="logo" />
       </header>
       <Content >
-        <Crypto/>
+        <Calculator/>
       </Content>
       <Footer />
     </div>
