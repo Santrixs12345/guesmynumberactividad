@@ -42,7 +42,7 @@ class Calculator extends Component {
                         type = "text"
                         value = {this.state.number1}
                     />
-                    <select className= "Operacion" name="operacion" value = {this.state.selector} onChange= {this.handleOnChange} >
+                    <select className= "Operacion" name="selector" value = {this.state.selector} onChange= {this.handleOnChange} >
                         <option value="+">+</option>
                         <option value="-">-</option>
                         <option value="*">*</option>
